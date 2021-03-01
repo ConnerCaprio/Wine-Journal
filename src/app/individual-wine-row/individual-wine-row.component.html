@@ -1,0 +1,30 @@
+<div *ngFor="let wine of wines">
+  <div style="padding-left: 2%; padding-right: 2%; margin-top: 2%;">
+      <div class="row" style="border-style: solid; border-color: maroon;">
+
+          <div class="col-2">
+              <img src="../../assets/{{wine.picName}}" style="width: 100px; height: 100px; margin-top: 10px;">
+          </div>
+          <div class="col-4">
+              <form >
+              <p style="margin-bottom: 0px;">Wine Name: {{wine.name}}</p>
+              <p style="margin-bottom: 0px;">Rating: {{wine.rating}}</p>
+              <p style="margin-bottom: 0px;">Year: {{wine.year}}</p>
+              <p style="margin-bottom: 0px;">Terroir: {{wine.terroir}}</p>
+              <p style="margin-bottom: 0px;">Varietal: {{wine.variety}}</p>
+          </form>
+          </div>
+          <div class="col-6" style="padding-right: 0px;">
+              <div class="row" style="border-style: solid; background-color: lightgrey; height: 70%; margin-top: 2%; width: 100%;">
+                  <p style="margin-left: 1%;">{{wine.notes}}</p>
+                  <!--or use TEXTAREA tag instead-->
+              </div>
+              <div class="row">
+                  <p style="margin-bottom: 0px;">Price: ${{wine.price}}</p>
+                  <p style="margin-bottom: 0px; margin-left: 30%;">Alc %: {{wine.alcPercent}}%</p>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
