@@ -47,8 +47,44 @@ app.post("/api/posts", (req, res, next) => {
   res.status(201).json({message: 'got it successfully'});
 });
 
-app.get('/api/posts', (req, res, next) => {
+app.get('/api/posts/', (req, res, next) => {
   Wine.find()
+    .then(documents => {
+      res.status(200).json({
+        message: 'wines fetched successfully',
+        wines: documents}); //must send response or will get infinite load in browser
+    });
+   //can do searching and narrow down here. in mongoose docs
+
+
+});
+
+app.get('/api/posts/red', (req, res, next) => {
+  Wine.find({type: 'Red'})
+    .then(documents => {
+      res.status(200).json({
+        message: 'wines fetched successfully',
+        wines: documents}); //must send response or will get infinite load in browser
+    });
+   //can do searching and narrow down here. in mongoose docs
+
+
+});
+
+app.get('/api/posts/white', (req, res, next) => {
+  Wine.find({type: 'White'})
+    .then(documents => {
+      res.status(200).json({
+        message: 'wines fetched successfully',
+        wines: documents}); //must send response or will get infinite load in browser
+    });
+   //can do searching and narrow down here. in mongoose docs
+
+
+});
+
+app.get('/api/posts/sparkling', (req, res, next) => {
+  Wine.find({type: 'Sparkling'})
     .then(documents => {
       res.status(200).json({
         message: 'wines fetched successfully',

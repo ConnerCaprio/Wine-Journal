@@ -8,17 +8,40 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   title = 'wine-journal-app';
-  isActiveRed = true;
+  public isActiveRed = true;
   isActiveWhite = false;
   isActiveSparkling = false;
+  addWine = false;
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
   onAddClicked() {
-    alert('Clicked add');
+    this.addWine = true;
   }
+
+  onHideClicked() {
+    this.addWine = false;
+  }
+
+  onRedClicked() {
+    this.isActiveRed = true;
+    this.isActiveSparkling = false;
+    this.isActiveWhite = false;
+  }
+
+  onWhiteClicked() {
+    this.isActiveRed = false;
+    this.isActiveSparkling = false;
+    this.isActiveWhite = true;
+  }
+
+  onSparklingClicked() {
+    this.isActiveRed = false;
+    this.isActiveSparkling = true;
+    this.isActiveWhite = false;
+  }
+
 }

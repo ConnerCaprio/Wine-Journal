@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-4">
+  </div>
+  <div class="col-4">
+    <br/>
+    <form (submit)="onSubmitClicked(postForm)" #postForm="ngForm">
+      <input type = "text" name = "name" placeholder = "Name (Required)" ngModel>
+      <input type = "number" name = "rating" placeholder = "Rating (Required)" ngModel>
+      <br/>
+      <input type = "number" name = "year" placeholder = "Year" ngModel>
+      <input type = "text" name = "terroir" placeholder = "Place of Origin" ngModel>
+      <br/>
+      <input type = "text" name = "notes" placeholder = "Notes on the wine" ngModel>
+      <input type = "number" name = "alcPercent" placeholder = "Alcohol Percentage" ngModel>
+      <br/>
+      <input type = "text" name = "picName" placeholder = "Name of Picture" ngModel>
+      <input type = "text" name = "variety" placeholder = "Varietal" ngModel>
+      <br/>
+      <textarea style="width: 98%;"
+        matInput
+        rows="4"
+        name="notes"
+        ngModel
+        placeholder="Notes on the wine"></textarea>
+        <br/>
+        <div style="margin-left: 20%;">
+          <input type="radio" name = "type" value="Red" ngModel>Red
+          <input type="radio" name = "type" value="White" ngModel>White
+          <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling
+        </div>
+      <br/>
+      <input type = "submit" value = "submit" style="margin-left: 38%;">
+    </form>
+  </div>
+</div>

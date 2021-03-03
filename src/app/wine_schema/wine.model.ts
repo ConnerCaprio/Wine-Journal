@@ -7,8 +7,6 @@ export interface Wine {
 	notes: string,
 	variety: string,
 	alcPercent: Number,
-  id: Number,
   name: string,
-  content: string,
   picName: string
 }
