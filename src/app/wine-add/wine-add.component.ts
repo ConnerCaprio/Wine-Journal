@@ -9,9 +9,14 @@ import { WinesService } from './../wine_schema/wine.service';
 })
 export class WineAddComponent implements OnInit {
 
-  constructor(public winesService: WinesService) { }
+  type: any;
+
+  constructor(public winesService: WinesService) {
+    this.type = "Red";
+   }
 
   ngOnInit(): void {
+    this.type = "Red";
   }
 
   onSubmitClicked(form: NgForm) {
@@ -25,9 +30,7 @@ export class WineAddComponent implements OnInit {
       form.value.picName = 'NONE.jpg';
     }
 
-    alert('Submitted');
-
-    this.winesService.addPost(form.value.name, form.value.type2, form.value.rating, form.value.year, form.value.price,
+    this.winesService.addPost(form.value.name, form.value.type, form.value.rating, form.value.year, form.value.price,
        form.value.notes, form.value.variety, form.value.alcPercent, form.value.terroir, form.value.picName);
     form.resetForm();
   }

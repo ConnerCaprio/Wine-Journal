@@ -1,35 +1,90 @@
 <div class="row">
-  <div class="col-4">
+  <div class="col-2">
   </div>
-  <div class="col-4">
+  <div class="col-8">
     <br/>
+    <mat-card>
     <form (submit)="onSubmitClicked(postForm)" #postForm="ngForm">
-      <input type = "text" name = "name" placeholder = "Name (Required)" ngModel>
-      <input type = "number" name = "rating" placeholder = "Rating (Required)" ngModel>
+
+
+      <input matInput type = "text" name = "name" placeholder = "Name (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type = "number" name = "rating" placeholder = "Rating (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
       <br/>
-      <input type = "number" name = "year" placeholder = "Year" ngModel>
-      <input type = "text" name = "terroir" placeholder = "Place of Origin" ngModel>
+      <input matInput type = "number" name = "year" placeholder = "Year" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type = "text" name = "terroir" placeholder = "Place of Origin" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
       <br/>
-      <input type = "text" name = "notes" placeholder = "Notes on the wine" ngModel>
-      <input type = "number" name = "alcPercent" placeholder = "Alcohol Percentage" ngModel>
+      <input matInput type = "number" name = "alcPercent" placeholder = "Alcohol Percentage" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type = "text" name = "picName" placeholder = "Name of Picture" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type = "number" name = "price" placeholder = "Price" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <!-- <input type = "text" name = "variety" placeholder = "Varietal" ngModel> -->
       <br/>
-      <input type = "text" name = "picName" placeholder = "Name of Picture" ngModel>
-      <input type = "text" name = "variety" placeholder = "Varietal" ngModel>
+      <mat-form-field appearance="fill" name = "variety" style="width: 80%; margin-left: 10%;" ngModel>
+        <mat-select name = "variety" ngModel>
+          <mat-option value = "" >Varietal</mat-option>
+          <mat-option value = "Pinot Noir">Pinot Noir</mat-option>
+          <mat-option value = "Cabernet Sauvignon">Cabernet Sauvignon</mat-option>
+          <mat-option value = "Zinfandel">Zinfandel</mat-option>
+          <mat-option value = "Blend">Blend</mat-option>
+          <mat-option value = "Tempranillo">Tempranillo</mat-option>
+          <mat-option value = "Malbec">Malbec</mat-option>
+          <mat-option value = "Syrah">Syrah</mat-option>
+          <mat-option value = "Riesling">Riesling</mat-option>
+          <mat-option value = "Merlot">Merlot</mat-option>
+          <mat-option value = "Chianti">Chianti</mat-option>
+          <mat-option value = "Rose">Rose</mat-option>
+          <mat-option value = "Moscato">Moscato</mat-option>
+          <mat-option value = "Roscato">Roscato</mat-option>
+          <mat-option value = "Chardonnay">Chardonnay</mat-option>
+          <mat-option value = "Pinot Grigio">Pinot Grigio</mat-option>
+          <mat-option value = "Pinot Grie">Pinot Grie</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <!-- <select name = "variety" ngModel>
+        <option value = "" [selected]="true">Varietal</option>
+        <option value = "Pinot Noir">Pinot Noir</option>
+        <option value = "Cabernet Sauvignon">Cabernet Sauvignon</option>
+        <option value = "Zinfandel">Zinfandel</option>
+        <option value = "Blend">Blend</option>
+        <option value = "Tempranillo">Tempranillo</option>
+        <option value = "Malbec">Malbec</option>
+        <option value = "Syrah">Syrah</option>
+        <option value = "Riesling">Riesling</option>
+        <option value = "Merlot">Merlot</option>
+        <option value = "Chianti">Chianti</option>
+        <option value = "Rose">Rose</option>
+        <option value = "Moscato">Moscato</option>
+        <option value = "Roscato">Roscato</option>
+        <option value = "Chardonnay">Chardonnay</option>
+        <option value = "Pinot Grigio">Pinot Grigio</option>
+        <option value = "Pinot Grie">Pinot Grie</option>
+      </select> -->
+
       <br/>
-      <textarea style="width: 98%;"
+      <textarea style="width: 80%; margin-left: 10%;"
         matInput
         rows="4"
         name="notes"
         ngModel
         placeholder="Notes on the wine"></textarea>
         <br/>
-        <div style="margin-left: 20%;">
-          <input type="radio" name = "type" value="Red" ngModel>Red
+        <div style="margin-left: 34%;">
+          <mat-radio-group aria-label="Select an option" name = "type" ngModel>
+            <mat-radio-button  name = "type" value="Red" [checked]="true" ngModel>Red</mat-radio-button>
+            <mat-radio-button style="margin-left: 3%;" name = "type" value="White" ngModel>White</mat-radio-button>
+            <mat-radio-button style="margin-left: 3%;" name = "type" value="Sparkling" ngModel>Sparkling</mat-radio-button>
+          </mat-radio-group>
+          <!-- <input type="radio" name = "type" value="Red" ngModel>Red
           <input type="radio" name = "type" value="White" ngModel>White
-          <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling
+          <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling -->
         </div>
       <br/>
-      <input type = "submit" value = "submit" style="margin-left: 38%;">
+      <button
+      mat-raised-button
+      color="accent"
+      type="submit">Add Wine</button>
+
     </form>
+  </mat-card>
   </div>
 </div>
