@@ -1,25 +1,25 @@
-<div class="row">
+<div *ngIf="addWine" class="row">
   <div class="col-2">
   </div>
   <div class="col-8">
     <br/>
     <mat-card>
-    <form (submit)="onSubmitClicked(postForm)" #postForm="ngForm">
+    <form [formGroup]="addWineForm" (submit)="onSubmitClicked(addWineForm)">
 
 
-      <input matInput type = "text" name = "name" placeholder = "Name (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
-      <input matInput type = "number" name = "rating" placeholder = "Rating (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type="text" formControlName="name" placeholder="Name (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <input matInput type="number" formControlName="rating" placeholder="Rating (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" >
       <br/>
-      <input matInput type = "number" name = "year" placeholder = "Year" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
-      <input matInput type = "text" name = "terroir" placeholder = "Place of Origin" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type = "number" formControlName = "year" placeholder = "Year" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <input matInput type = "text" formControlName = "terroir" placeholder = "Place of Origin" style="width: 40%; margin-left: 10%; height: 2rem;" >
       <br/>
-      <input matInput type = "number" name = "alcPercent" placeholder = "Alcohol Percentage" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
-      <input matInput type = "text" name = "picName" placeholder = "Name of Picture" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
-      <input matInput type = "number" name = "price" placeholder = "Price" style="width: 40%; margin-left: 10%; height: 2rem;" ngModel>
+      <input matInput type = "number" formControlName = "alcPercent" placeholder = "Alcohol Percentage" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <input matInput type = "text" formControlName = "picName" placeholder = "Name of Picture" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <input matInput type = "number" formControlName = "price" placeholder = "Price" style="width: 40%; margin-left: 10%; height: 2rem;" >
       <!-- <input type = "text" name = "variety" placeholder = "Varietal" ngModel> -->
       <br/>
-      <mat-form-field appearance="fill" name = "variety" style="width: 80%; margin-left: 10%;" ngModel>
-        <mat-select name = "variety" ngModel>
+      <mat-form-field appearance="fill" style="width: 80%; margin-left: 10%;" >
+        <mat-select formControlName = "variety" >
           <mat-option value = "" >Varietal</mat-option>
           <mat-option value = "Pinot Noir">Pinot Noir</mat-option>
           <mat-option value = "Cabernet Sauvignon">Cabernet Sauvignon</mat-option>
@@ -64,15 +64,15 @@
       <textarea style="width: 80%; margin-left: 10%;"
         matInput
         rows="4"
-        name="notes"
-        ngModel
+        formControlName="notes"
+        
         placeholder="Notes on the wine"></textarea>
         <br/>
         <div style="margin-left: 34%;">
-          <mat-radio-group aria-label="Select an option" name = "type" ngModel>
-            <mat-radio-button  name = "type" value="Red" [checked]="true" ngModel>Red</mat-radio-button>
-            <mat-radio-button style="margin-left: 3%;" name = "type" value="White" ngModel>White</mat-radio-button>
-            <mat-radio-button style="margin-left: 3%;" name = "type" value="Sparkling" ngModel>Sparkling</mat-radio-button>
+          <mat-radio-group aria-label="Select an option" formControlName = "type" >
+            <mat-radio-button value="Red">Red</mat-radio-button>
+            <mat-radio-button style="margin-left: 3%;" value="White" >White</mat-radio-button>
+            <mat-radio-button style="margin-left: 3%;" value="Sparkling" >Sparkling</mat-radio-button>
           </mat-radio-group>
           <!-- <input type="radio" name = "type" value="Red" ngModel>Red
           <input type="radio" name = "type" value="White" ngModel>White

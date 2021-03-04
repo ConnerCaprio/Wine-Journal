@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box
+}
+
+.my-navbar {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #591115;
+}
+
+.btn-active {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+  }
+
+  .btn-inactive {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+  }

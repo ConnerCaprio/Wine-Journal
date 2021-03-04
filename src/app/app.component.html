@@ -17,55 +17,63 @@
 
 
 <!-- Toolbar -->
-<div class="row" style="background-color: grey;">
-  <nav class="navbar navbar-light  row">
+<div class="row my-navbar">
+  <nav class="navbar navbar-light row mx-0">
     <a class="navbar-brand" href="#" style="margin-left: 2px;"><img src="./../assets/navbarLogo.jpg" style="width: 50px; height: auto;"></a>
-          <a class="btn btn-info" href="#" [ngClass]="{'btn-danger' : isActiveRed }" style="margin-right: 8px;" (click)="onRedClicked()">Red </a>
-          <a class="btn btn-info" href="#" [ngClass]="{'btn-danger' : isActiveWhite }" style="margin-right: 8px;" (click)="onWhiteClicked()">White</a>
-          <a class="btn btn-info" href="#" [ngClass]="{'btn-danger' : isActiveSparkling }" style="margin-right: 8px;" (click)="onSparklingClicked()">Sparking</a>
-
+      <button class="btn" [ngClass]="selected === 'red' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onRedClicked()">Red </button>
+      <button class="btn" [ngClass]="selected === 'white' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onWhiteClicked()">White</button>
+      <button class="btn" [ngClass]="selected === 'sparkling' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onSparklingClicked()">Sparkling</button>
   </nav>
 </div>
 
-<div class="row" style="margin-top: 1%;">
-<div class="col-10" style="float: left; margin-bottom: 0px;">
-  <div class="row">
-    <p style="margin-bottom: 0px;">Sort Varietals By: </p>
-    <div style="margin-left: 4%;">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-      <label class="form-check-label" for="flexCheckChecked">
-        ABC
-      </label>
+<div  style="padding-right: 2%; padding-left: 2%;">
+  <div class="row" style="margin-top: 1%;">
+    <div class="col-10" style="float: left; margin-bottom: 0px;">
+      <div class="row mx-0">
+        <div class="col-2">
+          <div class="row">
+            <p class="mb-2">Sort Varietals By: </p>
+          </div>
+          <div class="row">
+            <p style="margin-bottom: 0px;">Sort Wines By: </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <mat-radio-group aria-label="Select an option" (change)="varietalSort($event)" >
+            <div class="row">
+              <div class="col-2">
+                <mat-radio-button value="A-Z">A-Z</mat-radio-button>
+              </div>
+              <div class="col-2">
+                <mat-radio-button value="Z-A">Z-A</mat-radio-button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <mat-radio-button value="Rating Up">Rating <fa-icon class="icon" [icon]="upIcon"></fa-icon></mat-radio-button>
+              </div>
+              <div class="col-2">
+                <mat-radio-button value="Rating Down">Rating <fa-icon class="icon" [icon]="downIcon"></fa-icon></mat-radio-button>
+              </div>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
     </div>
-    <div style="margin-left: 4%; ">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-      <label class="form-check-label" for="flexCheckChecked">
-        Custom
-      </label>
+    <div class="col-2">
+      <button (click)="onAddClicked()" class="btn btn-inactive float-right">Add</button>
     </div>
   </div>
-
-  <div class="row">
-    <p style="margin-bottom: 0px;">Sort Wines By: </p>
-    <div style="margin-left: 4%;">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-      <label class="form-check-label" for="flexCheckChecked">
-        Rating
-      </label>
-    </div>
-  </div>
-</div>
-<div class="col-2" style="float: right; margin-top: 0px;">
-    <button (click)="onAddClicked()" class="btn btn-info">Add</button>
-    <button (click)="onHideClicked()" class="btn btn-info">Hide</button>
 </div>
 
-</div>
 <div class="row">
-  <app-wine-add *ngIf="addWine" class="col-12"></app-wine-add>
+  <app-wine-add class="col-12" [addWine]="addWine"></app-wine-add>
 </div>
 <app-varietal-seperator></app-varietal-seperator>
-<app-wine-list></app-wine-list>
+<app-wine-list
+  [selected]="selected"
+  [sort]="sort">
+</app-wine-list>
 
 To do:<br/>
 get nav bar to only take in red/white/sparkling<br/>

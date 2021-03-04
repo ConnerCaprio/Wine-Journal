@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatRadioChange } from '@angular/material/radio';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -8,10 +11,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   title = 'wine-journal-app';
-  public isActiveRed = true;
-  isActiveWhite = false;
-  isActiveSparkling = false;
+  selected = '';
   addWine = false;
+  sort = '';
+  upIcon = faArrowUp;
+  downIcon = faArrowDown;
 
   constructor() { }
 
@@ -22,26 +26,20 @@ export class AppComponent  {
     this.addWine = true;
   }
 
-  onHideClicked() {
-    this.addWine = false;
-  }
-
   onRedClicked() {
-    this.isActiveRed = true;
-    this.isActiveSparkling = false;
-    this.isActiveWhite = false;
+    this.selected = 'red';
   }
 
   onWhiteClicked() {
-    this.isActiveRed = false;
-    this.isActiveSparkling = false;
-    this.isActiveWhite = true;
+    this.selected = 'white';
   }
 
   onSparklingClicked() {
-    this.isActiveRed = false;
-    this.isActiveSparkling = true;
-    this.isActiveWhite = false;
+    this.selected = 'sparkling';
+  }
+
+  varietalSort($event: MatRadioChange): void {
+    this.sort = $event.value;
   }
 
 }
