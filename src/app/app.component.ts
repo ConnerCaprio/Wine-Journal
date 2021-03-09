@@ -14,9 +14,11 @@ export class AppComponent  {
   selected = 'all';
   addWine = false;
   sort = '';
+  varietalSort = '';
   upIcon = faArrowUp;
   downIcon = faArrowDown;
-  varieties = [
+  varieties: string[] = [];
+  allVarieties = [
     'Pinot Noir',
     'Cabernet Sauvignon',
     'Zinfandel',
@@ -32,12 +34,41 @@ export class AppComponent  {
     'Roscato',
     'Chardonnay',
     'Pinot Grigio',
-    'Pinot Grie'
+    'Pinot Gris',
+    'Other'
   ];
+  whiteVarieties = [
+    'Zinfandel',
+    'Blend',
+    'Riesling',
+    'Moscato',
+    'Chardonnay',
+    'Pinot Grigio',
+    'Pinot Gris',
+    'Other'
+  ];
+  redVarieties = [
+    'Pinot Noir',
+    'Cabernet Sauvignon',
+    'Zinfandel',
+    'Blend',
+    'Tempranillo',
+    'Malbec',
+    'Syrah',
+    'Merlot',
+    'Chianti',
+    'Roscato',
+    'Other'
+  ];
+  sparklingVarieties = [
+    'Rose',
+    'Other'
+  ]
 
   constructor() { }
 
   ngOnInit(): void {
+    this.varieties = this.allVarieties;
   }
 
   onAddClicked() {
@@ -46,22 +77,30 @@ export class AppComponent  {
 
   onRedClicked() {
     this.selected = 'red';
+    this.varieties = this.redVarieties;
   }
 
   onWhiteClicked() {
     this.selected = 'white';
+    this.varieties = this.whiteVarieties;
   }
 
   onSparklingClicked() {
     this.selected = 'sparkling';
+    this.varieties = this.sparklingVarieties;
   }
 
   onAllClicked() {
     this.selected = 'all';
+    this.varieties = this.allVarieties;
   }
 
-  varietalSort($event: MatRadioChange): void {
+  sortChange($event: MatRadioChange): void {
     this.sort = $event.value;
+  }
+
+  varietalSortChange($event: MatRadioChange): void {
+    this.varietalSort = $event.value;
   }
 
 }

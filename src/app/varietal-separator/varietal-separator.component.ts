@@ -11,7 +11,13 @@ export class VarietalSeparatorComponent implements OnInit {
   @Input()
   public set setVarietyList(list: Wine[]) {
     const wine = list[0];
-    this.varietySeparator = wine.variety;
+    if (wine) {
+      if (wine.variety === undefined || wine.variety === '') {
+        this.varietySeparator = 'Other';
+      } else {
+        this.varietySeparator = wine.variety;
+      }
+    }
   }
 
   varietySeparator = '';
