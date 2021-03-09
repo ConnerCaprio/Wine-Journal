@@ -19,10 +19,11 @@
 <!-- Toolbar -->
 <div class="row my-navbar">
   <nav class="navbar navbar-light row mx-0">
-    <a class="navbar-brand" href="#" style="margin-left: 2px;"><img src="./../assets/navbarLogo.jpg" style="width: 50px; height: auto;"></a>
+    <a class="navbar-brand" href="#" style="margin-left: 2px;"><img src="./../assets/images/navbarLogo.jpg" style="width: 50px; height: auto;"></a>
       <button class="btn" [ngClass]="selected === 'red' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onRedClicked()">Red </button>
       <button class="btn" [ngClass]="selected === 'white' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onWhiteClicked()">White</button>
       <button class="btn" [ngClass]="selected === 'sparkling' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onSparklingClicked()">Sparkling</button>
+      <button class="btn" [ngClass]="selected === 'all' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onAllClicked()">All</button>
   </nav>
 </div>
 
@@ -80,10 +81,9 @@ get sort working<br/>
 get varietal seperator working<br/>
 make add varietal be a dropdown based on the radio button?<br/>
 put on EC2<br/>
-image upload<br/>
 edit and delte wines<br/>
 loading spinner?<br/>
-
+image preview after choosing? wouldnt be hard theres a video for in on the class
 
 
 

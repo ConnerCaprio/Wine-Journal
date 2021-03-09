@@ -11,7 +11,7 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent  {
   title = 'wine-journal-app';
-  selected = '';
+  selected = 'all';
   addWine = false;
   sort = '';
   upIcon = faArrowUp;
@@ -36,6 +36,10 @@ export class AppComponent  {
 
   onSparklingClicked() {
     this.selected = 'sparkling';
+  }
+
+  onAllClicked() {
+    this.selected = 'all';
   }
 
   varietalSort($event: MatRadioChange): void {

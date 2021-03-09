@@ -14,7 +14,7 @@
       <input matInput type = "text" formControlName = "terroir" placeholder = "Place of Origin" style="width: 40%; margin-left: 10%; height: 2rem;" >
       <br/>
       <input matInput type = "number" formControlName = "alcPercent" placeholder = "Alcohol Percentage" style="width: 40%; margin-left: 10%; height: 2rem;" >
-      <input matInput type = "text" formControlName = "picName" placeholder = "Name of Picture" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <!-- <input matInput type = "text" formControlName = "picName" placeholder = "Name of Picture" style="width: 40%; margin-left: 10%; height: 2rem;" > -->
       <input matInput type = "number" formControlName = "price" placeholder = "Price" style="width: 40%; margin-left: 10%; height: 2rem;" >
       <!-- <input type = "text" name = "variety" placeholder = "Varietal" ngModel> -->
       <br/>
@@ -68,21 +68,24 @@
 
         placeholder="Notes on the wine"></textarea>
         <br/>
-        <div style="margin-left: 34%;">
-          <mat-radio-group aria-label="Select an option" formControlName = "type" >
-            <mat-radio-button value="Red">Red</mat-radio-button>
-            <mat-radio-button style="margin-left: 3%;" value="White" >White</mat-radio-button>
-            <mat-radio-button style="margin-left: 3%;" value="Sparkling" >Sparkling</mat-radio-button>
-          </mat-radio-group>
-          <!-- <input type="radio" name = "type" value="Red" ngModel>Red
-          <input type="radio" name = "type" value="White" ngModel>White
-          <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling -->
+        <div style="margin-left: 30%;">
+          <div class="row">
+            <div style="width: 10%; margin-right: 5%;">
+              <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
+              <input type="file" #filePicker style="visibility: hidden;" (change)="onImagePicked($event)">
+            </div>
+            <mat-radio-group aria-label="Select an option" formControlName = "type" style="width: 40%;">
+              <mat-radio-button value="Red">Red</mat-radio-button>
+              <mat-radio-button style="margin-left: 3%;" value="White" >White</mat-radio-button>
+              <mat-radio-button style="margin-left: 3%;" value="Sparkling" >Sparkling</mat-radio-button>
+            </mat-radio-group>
+            <!-- <input type="radio" name = "type" value="Red" ngModel>Red
+            <input type="radio" name = "type" value="White" ngModel>White
+            <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling -->
+          </div>
         </div>
       <br/>
-      <div>
-        <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
-        <input type="file" #filePicker style="visibility: hidden;" (change)="onImagePicked($event)">
-      </div>
+
       <button
       mat-raised-button
       color="accent"
