@@ -13,7 +13,13 @@ export class WineAddComponent implements OnInit {
   public addWine = false;
 
   @Input()
-  public varieties: string[] = [];
+  public redVarieties: string[] = [];
+
+  @Input()
+  public whiteVarieties: string[] = [];
+
+  @Input()
+  public sparklingVarieties: string[] = [];
 
   public addWineForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -29,10 +35,22 @@ export class WineAddComponent implements OnInit {
     image: new FormControl(null)
   });
 
+  public varieties: string[] = [];
+
   constructor(public winesService: WinesService) {
    }
 
   ngOnInit(): void {
+    this.varieties = this.redVarieties;
+    this.addWineForm.get('type')?.valueChanges.subscribe(val => {
+      if (val === 'Red') {
+        this.varieties = this.redVarieties;
+      } else if (val === 'White') {
+        this.varieties = this.whiteVarieties;
+      } else {
+        this.varieties = this.sparklingVarieties;
+      }
+    })
   }
 
   onSubmitClicked(form: FormGroup) {
