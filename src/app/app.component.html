@@ -19,7 +19,7 @@
 <!-- Toolbar -->
 <div class="row my-navbar">
   <nav class="navbar navbar-light row mx-0">
-    <a class="navbar-brand" href="#" style="margin-left: 2px;"><img src="./../assets/images/navbarLogo.jpg" style="width: 50px; height: auto;"></a>
+    <a class="navbar-brand" href="#" style="margin-left: 2px;"><img src="./../assets/images/navbarLogo.jpg" style="width: 50px; height: auto; border-radius: 1.5rem;"></a>
       <button class="btn" [ngClass]="selected === 'all' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onAllClicked()">All</button>
       <button class="btn" [ngClass]="selected === 'red' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onRedClicked()">Red </button>
       <button class="btn" [ngClass]="selected === 'white' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onWhiteClicked()">White</button>
@@ -93,7 +93,8 @@ To do:<br/>
 put on EC2<br/>
 edit and delte wines<br/>
 loading spinner?<br/>
-image preview after choosing? wouldnt be hard theres a video for in on the class
+image preview after choosing? wouldnt be hard theres a video for in on the class<br/>
+image modal after clicking image?
 
 
 
