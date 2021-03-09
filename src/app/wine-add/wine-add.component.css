@@ -1,0 +1,11 @@
+.add-wine {
+  background-color: #591115;
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #591115;
+}
+
+::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #591115;
+}

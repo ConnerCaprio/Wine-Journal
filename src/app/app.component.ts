@@ -16,6 +16,24 @@ export class AppComponent  {
   sort = '';
   upIcon = faArrowUp;
   downIcon = faArrowDown;
+  varieties = [
+    'Pinot Noir',
+    'Cabernet Sauvignon',
+    'Zinfandel',
+    'Blend',
+    'Tempranillo',
+    'Malbec',
+    'Syrah',
+    'Riesling',
+    'Merlot',
+    'Chianti',
+    'Rose',
+    'Moscato',
+    'Roscato',
+    'Chardonnay',
+    'Pinot Grigio',
+    'Pinot Grie'
+  ];
 
   constructor() { }
 

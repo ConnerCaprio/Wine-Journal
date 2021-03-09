@@ -20,10 +20,10 @@
 <div class="row my-navbar">
   <nav class="navbar navbar-light row mx-0">
     <a class="navbar-brand" href="#" style="margin-left: 2px;"><img src="./../assets/images/navbarLogo.jpg" style="width: 50px; height: auto;"></a>
+      <button class="btn" [ngClass]="selected === 'all' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onAllClicked()">All</button>
       <button class="btn" [ngClass]="selected === 'red' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onRedClicked()">Red </button>
       <button class="btn" [ngClass]="selected === 'white' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onWhiteClicked()">White</button>
       <button class="btn" [ngClass]="selected === 'sparkling' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onSparklingClicked()">Sparkling</button>
-      <button class="btn" [ngClass]="selected === 'all' ? 'btn-active' : 'btn-inactive'" style="margin-right: 8px;" (click)="onAllClicked()">All</button>
   </nav>
 </div>
 
@@ -68,17 +68,19 @@
 </div>
 
 <div class="row">
-  <app-wine-add class="col-12" [addWine]="addWine"></app-wine-add>
+  <app-wine-add class="col-12"
+  [addWine]="addWine"
+  [varieties]="varieties"></app-wine-add>
 </div>
-<app-varietal-seperator></app-varietal-seperator>
 <app-wine-list
-  [selected]="selected"
-  [sort]="sort">
+  [setSelected]="selected"
+  [setSort]="sort"
+  [varieties]="varieties">
 </app-wine-list>
 
 To do:<br/>
 get sort working<br/>
-get varietal seperator working<br/>
+get varietal separator working<br/>
 make add varietal be a dropdown based on the radio button?<br/>
 put on EC2<br/>
 edit and delte wines<br/>
