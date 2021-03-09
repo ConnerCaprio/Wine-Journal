@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { WinesService } from './../wine_schema/wine.service';
 
 @Component({
@@ -9,17 +9,29 @@ import { WinesService } from './../wine_schema/wine.service';
 })
 export class WineAddComponent implements OnInit {
 
-  type: any;
+  @Input()
+  public addWine = false;
+
+  public addWineForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    type: new FormControl('Red', Validators.required),
+    rating: new FormControl('', Validators.required),
+    year: new FormControl(''),
+    price: new FormControl(''),
+    notes: new FormControl(''),
+    variety: new FormControl(''),
+    alcPercent: new FormControl(''),
+    terroir: new FormControl(''),
+    picName: new FormControl('')
+  });
 
   constructor(public winesService: WinesService) {
-    this.type = "Red";
    }
 
   ngOnInit(): void {
-    this.type = "Red";
   }
 
-  onSubmitClicked(form: NgForm) {
+  onSubmitClicked(form: FormGroup) {
     var invalidForm = false;
     if (form.invalid) {
       alert('Something went wrong. Form invalid');
@@ -32,7 +44,8 @@ export class WineAddComponent implements OnInit {
 
     this.winesService.addPost(form.value.name, form.value.type, form.value.rating, form.value.year, form.value.price,
        form.value.notes, form.value.variety, form.value.alcPercent, form.value.terroir, form.value.picName);
-    form.resetForm();
+    form.reset();
+    this.addWine = false;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WinesService } from './../wine_schema/wine.service';
 
 @Component({
@@ -8,12 +8,14 @@ import { WinesService } from './../wine_schema/wine.service';
 })
 export class WineListComponent implements OnInit {
 
+  @Input()
+  public selected = '';
+
+  @Input()
+  public sort = '';
+
   constructor(public winesService: WinesService) { }
 
-  wines = [{
-    Name: 'Rubus',
-    Id: '1'
-  }];
 
   ngOnInit(): void {
     this.winesService.getWines();
