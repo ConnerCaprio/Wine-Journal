@@ -1,10 +1,38 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const multer = require('multer');
 
 const Wine = require('./models/wine');
 
 const app = express();
+
+const MINE_TYPE_MAP = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/jpg': 'jpg',
+};
+
+var currentExt = 'jpg';
+var currentDate = ''; //needed this because the mongo name and the file name were off by like .0003 seconds
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid = MINE_TYPE_MAP[file.mimetype];
+    let error = new Error('Invalid mime type');
+    if (isValid) {
+      error = null
+    }
+    cb(error, "src/assets/images")
+  },
+  filename: (req, file, cb) => {
+    const imageNameWithoutExtension = file.originalname.split('.');
+    const imageName = imageNameWithoutExtension[0].toLowerCase().split(' ').join('-');
+    currentExt = MINE_TYPE_MAP[file.mimetype];
+    currentDate = Date.now();
+    cb(null, imageName + '-' + currentDate + '.' + currentExt);
+  }
+});
 
 mongoose.connect("mongodb+srv://Conner:sPk1zfocah3jm1M8@cluster0.b9zfy.mongodb.net/wine-Journal-Database?retryWrites=true&w=majority")
 .then(() => {
@@ -28,7 +56,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/api/posts", (req, res, next) => {
+app.post("/api/posts", multer({storage: storage}).single("image"), (req, res, next) => { //ADDING A WINE
+  var picNameEdited = req.body.picName + '-' + currentDate + '.' + currentExt;
+  console.log('HERE IS THE EDITED PIC NAME: ' + picNameEdited);
   const post = new Wine({
     name: req.body.name,
     type: req.body.type,
@@ -40,7 +70,7 @@ app.post("/api/posts", (req, res, next) => {
     variety: req.body.variety,
     alcPercent: req.body.alcPercent,
     terroir: req.body.terroir,
-    picName: req.body.picName
+    picName: picNameEdited
   });
   post.save();
   console.log('CAUGHT A POST REQUEST: ' + post);
