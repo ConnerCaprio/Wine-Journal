@@ -21,44 +21,12 @@
       <mat-form-field appearance="fill" style="width: 80%; margin-left: 10%;" >
         <mat-select formControlName = "variety" >
           <mat-option value = "" >Varietal</mat-option>
-          <mat-option value = "Pinot Noir">Pinot Noir</mat-option>
-          <mat-option value = "Cabernet Sauvignon">Cabernet Sauvignon</mat-option>
-          <mat-option value = "Zinfandel">Zinfandel</mat-option>
-          <mat-option value = "Blend">Blend</mat-option>
-          <mat-option value = "Tempranillo">Tempranillo</mat-option>
-          <mat-option value = "Malbec">Malbec</mat-option>
-          <mat-option value = "Syrah">Syrah</mat-option>
-          <mat-option value = "Riesling">Riesling</mat-option>
-          <mat-option value = "Merlot">Merlot</mat-option>
-          <mat-option value = "Chianti">Chianti</mat-option>
-          <mat-option value = "Rose">Rose</mat-option>
-          <mat-option value = "Moscato">Moscato</mat-option>
-          <mat-option value = "Roscato">Roscato</mat-option>
-          <mat-option value = "Chardonnay">Chardonnay</mat-option>
-          <mat-option value = "Pinot Grigio">Pinot Grigio</mat-option>
-          <mat-option value = "Pinot Grie">Pinot Grie</mat-option>
+          <div *ngFor="let item of varieties">
+            <mat-option value="{{item}}">{{item}}</mat-option>
+          </div>
 
         </mat-select>
       </mat-form-field>
-      <!-- <select name = "variety" ngModel>
-        <option value = "" [selected]="true">Varietal</option>
-        <option value = "Pinot Noir">Pinot Noir</option>
-        <option value = "Cabernet Sauvignon">Cabernet Sauvignon</option>
-        <option value = "Zinfandel">Zinfandel</option>
-        <option value = "Blend">Blend</option>
-        <option value = "Tempranillo">Tempranillo</option>
-        <option value = "Malbec">Malbec</option>
-        <option value = "Syrah">Syrah</option>
-        <option value = "Riesling">Riesling</option>
-        <option value = "Merlot">Merlot</option>
-        <option value = "Chianti">Chianti</option>
-        <option value = "Rose">Rose</option>
-        <option value = "Moscato">Moscato</option>
-        <option value = "Roscato">Roscato</option>
-        <option value = "Chardonnay">Chardonnay</option>
-        <option value = "Pinot Grigio">Pinot Grigio</option>
-        <option value = "Pinot Grie">Pinot Grie</option>
-      </select> -->
 
       <br/>
       <textarea style="width: 80%; margin-left: 10%;"
@@ -68,26 +36,29 @@
 
         placeholder="Notes on the wine"></textarea>
         <br/>
-        <div style="margin-left: 30%;">
+        <div style="margin-left: 10%;">
           <div class="row">
-            <div style="width: 10%; margin-right: 5%;">
-              <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
-              <input type="file" #filePicker style="visibility: hidden;" (change)="onImagePicked($event)">
+            <div class="col-2">
+              <div style="width: 10%;">
+                <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
+                <input type="file" #filePicker style="visibility: hidden;" (change)="onImagePicked($event)">
+              </div>
             </div>
-            <mat-radio-group aria-label="Select an option" formControlName = "type" style="width: 40%;">
-              <mat-radio-button value="Red">Red</mat-radio-button>
-              <mat-radio-button style="margin-left: 3%;" value="White" >White</mat-radio-button>
-              <mat-radio-button style="margin-left: 3%;" value="Sparkling" >Sparkling</mat-radio-button>
-            </mat-radio-group>
-            <!-- <input type="radio" name = "type" value="Red" ngModel>Red
-            <input type="radio" name = "type" value="White" ngModel>White
-            <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling -->
+            <div class="col-4"></div>
+            <div class="col-6">
+              <mat-radio-group aria-label="Select an option" formControlName = "type" style="width: 40%;">
+                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" value="Red">Red</mat-radio-button>
+                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" style="margin-left: 3%;" value="White" >White</mat-radio-button>
+                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" style="margin-left: 3%;" value="Sparkling" >Sparkling</mat-radio-button>
+              </mat-radio-group>
+            </div>
           </div>
         </div>
       <br/>
 
       <button
       mat-raised-button
+      class="add-wine"
       color="accent"
       type="submit">Add Wine</button>
 

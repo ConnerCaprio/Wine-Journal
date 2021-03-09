@@ -1,4 +1,6 @@
-<app-individual-wine-row
-    [setSelected]="selected"
-    [setSort]="sort">
-</app-individual-wine-row>
+<div *ngFor="let varietyList of wineList">
+  <app-varietal-separator [setVarietyList]="varietyList"></app-varietal-separator>
+  <div *ngFor="let wine of varietyList">
+    <app-individual-wine-row [wine]="wine"></app-individual-wine-row>
+  </div>
+</div>

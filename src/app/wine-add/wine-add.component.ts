@@ -12,6 +12,9 @@ export class WineAddComponent implements OnInit {
   @Input()
   public addWine = false;
 
+  @Input()
+  public varieties: string[] = [];
+
   public addWineForm = new FormGroup({
     name: new FormControl('', Validators.required),
     type: new FormControl('Red', Validators.required),

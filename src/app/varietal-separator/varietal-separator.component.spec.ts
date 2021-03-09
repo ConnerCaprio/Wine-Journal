@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VarietalSeperatorComponent } from './varietal-seperator.component';
+import { VarietalSeparatorComponent } from './varietal-separator.component';
 
-describe('VarietalSeperatorComponent', () => {
-  let component: VarietalSeperatorComponent;
-  let fixture: ComponentFixture<VarietalSeperatorComponent>;
+describe('VarietalSeparatorComponent', () => {
+  let component: VarietalSeparatorComponent;
+  let fixture: ComponentFixture<VarietalSeparatorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VarietalSeperatorComponent ]
+      declarations: [ VarietalSeparatorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VarietalSeperatorComponent);
+    fixture = TestBed.createComponent(VarietalSeparatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
