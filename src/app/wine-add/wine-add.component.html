@@ -65,7 +65,7 @@
         matInput
         rows="4"
         formControlName="notes"
-        
+
         placeholder="Notes on the wine"></textarea>
         <br/>
         <div style="margin-left: 34%;">
@@ -79,6 +79,10 @@
           <input type="radio" name = "type" value="Sparkling" ngModel>Sparkling -->
         </div>
       <br/>
+      <div>
+        <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
+        <input type="file" #filePicker style="visibility: hidden;" (change)="onImagePicked($event)">
+      </div>
       <button
       mat-raised-button
       color="accent"

@@ -64,8 +64,8 @@ export class WinesService {
     return this.sparklingWinesUpdated.asObservable();
   }
 
-  addPost(name: string, type: string, rating: number, year: number, price: number, notes: string, variety: string, alcPercent: number, terroir: string, picName: string) {
-    const post: Wine = {
+  addPost(name: string, type: string, rating: string, year: string, price: string, notes: string, variety: string, alcPercent: string, terroir: string, picName: string, image: File) {
+     /* const post: Wine = {
       name: name,
       type: type,
       rating: rating,
@@ -75,10 +75,32 @@ export class WinesService {
       variety: variety,
       alcPercent: alcPercent,
       terroir: terroir,
-      picName: picName };
+      picName: picName }; */
+      const postData = new FormData();
+      postData.append("name", name);
+      postData.append("type", type);
+      postData.append("rating", rating);
+      postData.append("year", year);
+      postData.append("price", price);
+      postData.append("notes", notes);
+      postData.append("variety", variety);
+      postData.append("alcPercent", alcPercent);
+      postData.append("terroir", terroir);
+      postData.append("picName", picName);
+      postData.append("image", image, picName);
     this.http
-      .post<{ message: string }>("http://localhost:3000/api/posts", post)
+      .post<{ message: string }>("http://localhost:3000/api/posts", postData)
       .subscribe(responseData => {
+        const post: Wine = {name: name,
+          type: type,
+          rating: rating,
+          year: year,
+          price: price,
+          notes: notes,
+          variety: variety,
+          alcPercent: alcPercent,
+          terroir: terroir,
+          picName: picName}
         console.log(responseData.message);
         this.wines.push(post);
         //this.winesUpdated.next([...this.wines]);

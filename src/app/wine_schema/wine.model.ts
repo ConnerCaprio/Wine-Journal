@@ -1,12 +1,12 @@
 export interface Wine {
   type: string,
 	terroir: string,
-	year: Number,
-	rating: Number,
-	price: Number,
+	year: string,
+	rating: string,
+	price: string,
 	notes: string,
 	variety: string,
-	alcPercent: Number,
+	alcPercent: string,
   name: string,
   picName: string
 }

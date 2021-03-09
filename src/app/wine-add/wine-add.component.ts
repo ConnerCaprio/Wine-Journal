@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgForm, Validators } from '@angular/forms';
 import { WinesService } from './../wine_schema/wine.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class WineAddComponent implements OnInit {
     variety: new FormControl(''),
     alcPercent: new FormControl(''),
     terroir: new FormControl(''),
-    picName: new FormControl('')
+    picName: new FormControl(''),
+    image: new FormControl(null)
   });
 
   constructor(public winesService: WinesService) {
@@ -42,10 +43,27 @@ export class WineAddComponent implements OnInit {
       form.value.picName = 'NONE.jpg';
     }
 
+    var imageNameWithoutExtension = form.value.image.name.split('.');
+    imageNameWithoutExtension = imageNameWithoutExtension[0].toLowerCase().split(' ').join('-');
+
     this.winesService.addPost(form.value.name, form.value.type, form.value.rating, form.value.year, form.value.price,
-       form.value.notes, form.value.variety, form.value.alcPercent, form.value.terroir, form.value.picName);
+       form.value.notes, form.value.variety, form.value.alcPercent, form.value.terroir, imageNameWithoutExtension, form.value.image);
     form.reset();
     this.addWine = false;
+  }
+
+  onImagePicked(event: Event) {
+    var fileCheck = (event.target as HTMLInputElement).files;
+    if (fileCheck === null) {
+      alert('image was null');
+      return;
+    }
+    const file = fileCheck[0];
+
+    this.addWineForm.patchValue({image: file});
+    this.addWineForm.get('image')?.updateValueAndValidity();
+    console.log(file);
+    console.log(this.addWineForm);
   }
 
 }
