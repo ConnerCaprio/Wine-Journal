@@ -82,12 +82,14 @@
   [whiteVarieties]="whiteVarieties"
   [sparklingVarieties]="sparklingVarieties"></app-wine-add>
 </div>
-<app-wine-list
-  [setSelected]="selected"
-  [setSort]="sort"
-  [setVarietalSort]="varietalSort"
-  [varieties]="varieties">
-</app-wine-list>
+<div class="col-12">
+  <app-wine-list
+    [setSelected]="selected"
+    [setSort]="sort"
+    [setVarietalSort]="varietalSort"
+    [varieties]="varieties">
+  </app-wine-list>
+</div>
 
 To do:<br/>
 put on EC2<br/>
@@ -99,3 +101,9 @@ image modal after clicking image?
 
 
 <router-outlet></router-outlet>
+<footer class="footer">
+  <div class="container" style="margin-left: 40%;">
+    <span class="text-muted">Powered by: Angular, Node, Express, & MongoDB </span><br/>
+    <span class="text-muted">Created by: Conner Caprio and Corrine Smith </span>
+  </div>
+</footer>
