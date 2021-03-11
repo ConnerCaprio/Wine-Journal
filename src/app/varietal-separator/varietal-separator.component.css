@@ -1,0 +1,13 @@
+.separator {
+  border-bottom: solid;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-color: black;
+  height: 30px;
+  padding-left: 5px;
+}
+
+.varietyName {
+  margin-top: 5px;
+  font-size: 17px;
+}

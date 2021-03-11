@@ -60,12 +60,17 @@ export class WineAddComponent implements OnInit {
       return;
     }
 
-    if (form.value.picName == '' || form.value.picName == null) {
-      form.value.picName = 'NONE.jpg';
+    var imageNameWithoutExtension;
+
+    if (form.value.image == '' || form.value.image == null) {
+      imageNameWithoutExtension = 'NONE.jpg';
+    }
+    else {
+      imageNameWithoutExtension = form.value.image.name.split('.');
+    imageNameWithoutExtension = imageNameWithoutExtension[0].toLowerCase().split(' ').join('-');
     }
 
-    var imageNameWithoutExtension = form.value.image.name.split('.');
-    imageNameWithoutExtension = imageNameWithoutExtension[0].toLowerCase().split(' ').join('-');
+     
 
     this.winesService.addPost(form.value.name, form.value.type, form.value.rating, form.value.year, form.value.price,
        form.value.notes, form.value.variety, form.value.alcPercent, form.value.terroir, imageNameWithoutExtension, form.value.image);

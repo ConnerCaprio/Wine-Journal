@@ -57,7 +57,11 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/posts", multer({storage: storage}).single("image"), (req, res, next) => { //ADDING A WINE
-  var picNameEdited = req.body.picName + '-' + currentDate + '.' + currentExt;
+  var picNameEdited = req.body.picName;
+  if (!req.body.picName.includes('.jpg')) {
+     picNameEdited = req.body.picName + '-' + currentDate + '.' + currentExt;
+  }
+  
   console.log('HERE IS THE EDITED PIC NAME: ' + picNameEdited);
   const post = new Wine({
     name: req.body.name,

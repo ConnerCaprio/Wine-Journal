@@ -2,10 +2,62 @@
   background-color: #591115;
 }
 
+.text-input {
+  width: 39%;
+  margin-left: 10%;
+  height: 2rem;
+  border: solid 1px;
+  border-color: rgb(240, 240, 240);
+  padding-left: 5px;
+  margin-bottom: 1%;
+}
+
+.dropdown {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.notes {
+  width: 80%;
+  margin-left: 10%;
+  border: solid 1px;
+  border-color: rgb(240, 240, 240);
+  margin-bottom: 1%;
+  padding-left: 5px;
+}
+
+.bottom-row {
+  margin-left: 10%;
+}
+
+.img-btn {
+  width: 10%;
+}
+
+.img-input {
+  visibility: hidden;
+}
+
+.radio-group {
+  width: 40%;
+}
+
+.radio-btn-margin {
+  margin-left: 3%;
+}
+
 ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: #591115;
 }
 
 ::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle {
   background-color: #591115;
+}
+
+::ng-deep.mat-form-field-infix {
+  border-top: 0px;
+}
+
+::ng-deep.mat-select-arrow-wrapper {
+  vertical-align: bottom !important;
 }

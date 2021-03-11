@@ -77,17 +77,34 @@ export class WinesService {
       terroir: terroir,
       picName: picName }; */
       const postData = new FormData();
-      postData.append("name", name);
-      postData.append("type", type);
-      postData.append("rating", rating);
-      postData.append("year", year);
-      postData.append("price", price);
-      postData.append("notes", notes);
-      postData.append("variety", variety);
-      postData.append("alcPercent", alcPercent);
-      postData.append("terroir", terroir);
-      postData.append("picName", picName);
-      postData.append("image", image, picName);
+      if (picName.includes('jpg')) {
+        postData.append("name", name);
+        postData.append("type", type);
+        postData.append("rating", rating);
+        postData.append("year", year);
+        postData.append("price", price);
+        postData.append("notes", notes);
+        postData.append("variety", variety);
+        postData.append("alcPercent", alcPercent);
+        postData.append("terroir", terroir);
+        postData.append("picName", picName);
+      }
+      else {
+        postData.append("name", name);
+        postData.append("type", type);
+        postData.append("rating", rating);
+        postData.append("year", year);
+        postData.append("price", price);
+        postData.append("notes", notes);
+        postData.append("variety", variety);
+        postData.append("alcPercent", alcPercent);
+        postData.append("terroir", terroir);
+        postData.append("picName", picName);
+        postData.append("image", image, picName);
+      }
+
+      
+      
     this.http
       .post<{ message: string }>("http://localhost:3000/api/posts", postData)
       .subscribe(responseData => {

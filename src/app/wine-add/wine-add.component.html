@@ -7,49 +7,45 @@
     <form [formGroup]="addWineForm" (submit)="onSubmitClicked(addWineForm)">
 
 
-      <input matInput type="text" formControlName="name" placeholder="Name (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" >
-      <input matInput type="number" formControlName="rating" placeholder="Rating (Required)" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <input matInput type="text" class="text-input" formControlName="name" placeholder="Name (Required)">
+      <input matInput type="number" class="text-input" formControlName="rating" placeholder="Rating (Required)">
       <br/>
-      <input matInput type = "number" formControlName = "year" placeholder = "Year" style="width: 40%; margin-left: 10%; height: 2rem;" >
-      <input matInput type = "text" formControlName = "terroir" placeholder = "Place of Origin" style="width: 40%; margin-left: 10%; height: 2rem;" >
+      <input matInput type="number" class="text-input" formControlName="year" placeholder="Year">
+      <input matInput type="text" class="text-input" formControlName="terroir" placeholder="Place of Origin">
       <br/>
-      <input matInput type = "number" formControlName = "alcPercent" placeholder = "Alcohol Percentage" style="width: 40%; margin-left: 10%; height: 2rem;" >
-      <!-- <input matInput type = "text" formControlName = "picName" placeholder = "Name of Picture" style="width: 40%; margin-left: 10%; height: 2rem;" > -->
-      <input matInput type = "number" formControlName = "price" placeholder = "Price" style="width: 40%; margin-left: 10%; height: 2rem;" >
-      <!-- <input type = "text" name = "variety" placeholder = "Varietal" ngModel> -->
+      <input matInput type="number" class="text-input" formControlName="alcPercent" placeholder="Alcohol Percentage">
+      <input matInput type="number" class="text-input" formControlName="price" placeholder="Price">
       <br/>
-      <mat-form-field appearance="fill" style="width: 80%; margin-left: 10%;" >
-        <mat-select formControlName = "variety" >
-          <mat-option value = "" >Varietal</mat-option>
+      <mat-form-field appearance="fill" class="dropdown">
+        <mat-select formControlName="variety" >
+          <mat-option value="" >Varietal</mat-option>
           <div *ngFor="let item of varieties">
             <mat-option value="{{item}}">{{item}}</mat-option>
           </div>
-
         </mat-select>
       </mat-form-field>
 
       <br/>
-      <textarea style="width: 80%; margin-left: 10%;"
+      <textarea class="notes"
         matInput
         rows="4"
         formControlName="notes"
-
         placeholder="Notes on the wine"></textarea>
         <br/>
-        <div style="margin-left: 10%;">
+        <div class="bottom-row">
           <div class="row">
             <div class="col-2">
-              <div style="width: 10%;">
+              <div class="img-btn">
                 <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
-                <input type="file" #filePicker style="visibility: hidden;" (change)="onImagePicked($event)">
+                <input type="file" #filePicker class="img-input" (change)="onImagePicked($event)">
               </div>
             </div>
             <div class="col-4"></div>
             <div class="col-6">
-              <mat-radio-group aria-label="Select an option" formControlName = "type" style="width: 40%;">
+              <mat-radio-group aria-label="Select an option" class="radio-group" formControlName="type">
                 <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" value="Red">Red</mat-radio-button>
-                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" style="margin-left: 3%;" value="White" >White</mat-radio-button>
-                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" style="margin-left: 3%;" value="Sparkling" >Sparkling</mat-radio-button>
+                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent radio-btn-margin" value="White" >White</mat-radio-button>
+                <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent radio-btn-margin" value="Sparkling" >Sparkling</mat-radio-button>
               </mat-radio-group>
             </div>
           </div>
@@ -57,11 +53,12 @@
       <br/>
 
       <button
-      mat-raised-button
-      class="add-wine"
-      color="accent"
-      type="submit">Add Wine</button>
-
+        mat-raised-button
+        class="add-wine"
+        color="accent"
+        type="submit">
+        Add Wine
+      </button>
     </form>
   </mat-card>
   </div>

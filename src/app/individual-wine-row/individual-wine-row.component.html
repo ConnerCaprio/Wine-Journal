@@ -1,26 +1,41 @@
 <div class="wineRowComponentRow">
-  <div class="row wineRowComponentBox" style="border-style: solid; border-color: maroon;">
-    <div class="col-2">
-      <img class="wineImage" src="../../assets/images/{{wine.picName}}">
-    </div>
-    <div class="col-4 wineAttributesList" >
-      <form >
-        <p class="wineAttribute wineAttributeTop" >Wine Name: {{wine.name}}</p>
-        <p class="wineAttribute">Rating: {{wine.rating}}</p>
-        <p class="wineAttribute">Year: {{wine.year}}</p>
-        <p class="wineAttribute">Terroir: {{wine.terroir}}</p>
-        <p class="wineAttribute">Varietal: {{wine.variety}}</p>
-      </form>
-    </div>
-    <div class="col-6" style="padding-right: 0px;">
-      <div class="row notesBox">
-        <p style="margin-left: 1%;">{{wine.notes}}</p>
+  <div class="row wineRowComponentBox">
+    <div class="row">
+      <div class="col-3">
+        <img class="wineImage" src="../../assets/images/{{wine.picName}}">
       </div>
-      <div class="row">
-         <p *ngIf="wine.price" class="wineAttribute" >Price: ${{wine.price}}</p>
-         <p *ngIf="!wine.price" class="wineAttribute" >Price: NA</p>
-         <p *ngIf="wine.alcPercent" class="wineAttribute" style="margin-left: 30%;">Alcohol: {{wine.alcPercent}}%</p>
-         <p *ngIf="!wine.alcPercent" class="wineAttribute" style=" margin-left: 30%;">Alcohol: NA</p>
+      <div class="col-9 wineAttributesList" >
+        <form>
+          <div class="row">
+            <div class="col-12">
+              <p class="wineAttribute wineAttributeTop">Wine Name: <span class="wineAttributeValue">{{wine.name}}</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p class="wineAttribute">Rating: <span class="wineAttributeValue">{{wine.rating}}</span></p>
+              <p class="wineAttribute">Year: <span class="wineAttributeValue">{{wine.year}}</span></p>
+            </div>
+            <div class="col-6">
+              <p class="wineAttribute">Terroir: <span class="wineAttributeValue">{{wine.terroir}}</span></p>
+              <p class="wineAttribute">Varietal: <span class="wineAttributeValue">{{wine.variety}}</span></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row w-100 mb-3">
+      <div class="col-1"></div>
+      <div class="col-11 pr-0">
+        <div class="row notesBox">
+          <p class="notes">{{wine.notes}}</p>
+        </div>
+        <div class="row">
+          <p *ngIf="wine.price" class="wineAttribute" >Price: <span class="wineAttributeValue">${{wine.price}}</span></p>
+          <p *ngIf="!wine.price" class="wineAttribute" >Price: NA</p>
+          <p *ngIf="wine.alcPercent" class="wineAttribute extra-margin">Alcohol: <span class="wineAttributeValue">{{wine.alcPercent}}%</span></p>
+          <p *ngIf="!wine.alcPercent" class="wineAttribute extra-margin">Alcohol: NA</p>
+        </div>
       </div>
     </div>
   </div>
