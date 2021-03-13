@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Wine } from './wine.model';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class WinesService {
@@ -14,10 +15,12 @@ export class WinesService {
   private whiteWinesUpdated = new Subject<Wine[]>();
   private sparklingWinesUpdated = new Subject<Wine[]>();
 
+   BACKEND_URL = environment.apiUrl + "/posts/";
+
   constructor(private http: HttpClient) {}
 
   getWines() {
-    this.http.get<{message: String, wines: Wine[]}>('http://localhost:3000/api/posts')
+    this.http.get<{message: String, wines: Wine[]}>(this.BACKEND_URL)
       .subscribe((wineData) => {
         this.wines = wineData.wines;
         this.winesUpdated.next([...this.wines])
@@ -25,7 +28,7 @@ export class WinesService {
   }
 
   getRedWines() {
-    this.http.get<{message: String, wines: Wine[]}>('http://localhost:3000/api/posts/red')
+    this.http.get<{message: String, wines: Wine[]}>(this.BACKEND_URL + 'red')
       .subscribe((wineData) => {
         this.redWines = wineData.wines;
         this.redWinesUpdated.next([...this.redWines])
@@ -33,7 +36,7 @@ export class WinesService {
   }
 
   getWhiteWines() {
-    this.http.get<{message: String, wines: Wine[]}>('http://localhost:3000/api/posts/white')
+    this.http.get<{message: String, wines: Wine[]}>(this.BACKEND_URL + 'white')
       .subscribe((wineData) => {
         this.whiteWines = wineData.wines;
         this.whiteWinesUpdated.next([...this.whiteWines])
@@ -41,7 +44,7 @@ export class WinesService {
   }
 
   getSparklingWines() {
-    this.http.get<{message: String, wines: Wine[]}>('http://localhost:3000/api/posts/sparkling')
+    this.http.get<{message: String, wines: Wine[]}>(this.BACKEND_URL + 'sparkling')
       .subscribe((wineData) => {
         this.sparklingWines = wineData.wines;
         this.sparklingWinesUpdated.next([...this.sparklingWines])
@@ -103,10 +106,10 @@ export class WinesService {
         postData.append("image", image, picName);
       }
 
-      
-      
+
+
     this.http
-      .post<{ message: string }>("http://localhost:3000/api/posts", postData)
+      .post<{ message: string }>(this.BACKEND_URL , postData)
       .subscribe(responseData => {
         const post: Wine = {name: name,
           type: type,
