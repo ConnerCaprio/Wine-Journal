@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -46,6 +47,7 @@ mongoose.connect("mongodb+srv://Conner:sPk1zfocah3jm1M8@cluster0.b9zfy.mongodb.n
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use("/", express.static(path.join(__dirname, "angular")));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -56,12 +58,10 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 app.post("/api/posts", multer({storage: storage}).single("image"), (req, res, next) => { //ADDING A WINE
-  var picNameEdited = req.body.picName;
-  if (!req.body.picName.includes('.jpg')) {
-     picNameEdited = req.body.picName + '-' + currentDate + '.' + currentExt;
-  }
-  
+  var picNameEdited = req.body.picName + '-' + currentDate + '.' + currentExt;
   console.log('HERE IS THE EDITED PIC NAME: ' + picNameEdited);
   const post = new Wine({
     name: req.body.name,
@@ -129,52 +129,8 @@ app.get('/api/posts/sparkling', (req, res, next) => {
 
 });
 
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "angular", "index.html"));
+});
+
 module.exports = app;
-
-
-/*
-const wines = [
-    {
-      id: 1,
-      name: 'rubus',
-      content:'coming from server',
-      type: 'red',
-      terroir: 'cali',
-      year: 2017,
-      rating: 91,
-      price: 12,
-      notes: 'twas good and cool',
-      variety: 'blend',
-      alcPercent: 11,
-      picName: 'wine.png'
-    },
-    {
-      id: 1,
-      name: 'espania',
-      content:'coming from server',
-      type: 'red',
-      terroir: 'spain',
-      year: 2009,
-      rating: 95,
-      price: 13,
-      notes: 'best spanish wine not spicy',
-      variety: 'Tempranillo',
-      alcPercent: 12,
-      picName: 'wine2.jpg'
-    },
-    {
-      id: 3,
-      name: 'bitches',
-      content:'coming from server',
-      type: 'white',
-      terroir: 'my butt',
-      year: 6969,
-      rating: 69,
-      price: 69,
-      notes: 'uber thicc',
-      variety: 'hoes',
-      alcPercent: 69,
-      picName: 'wine2.jpg'
-      ];
-    }
-*/
