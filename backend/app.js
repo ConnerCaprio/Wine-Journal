@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
     if (isValid) {
       error = null
     }
-    cb(error, "src/assets/images")
+    cb(error, "./angular/assets/images")
   },
   filename: (req, file, cb) => {
     const imageNameWithoutExtension = file.originalname.split('.');
@@ -49,19 +49,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/", express.static(path.join(__dirname, "angular")));
 
-/* app.use((req, res, next) => {
+//comment out for aws
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers',
    'Origin, X-Requested-With, Content-Type, Accept');
    res.setHeader('Access-Control-Allow-Methods',
     'GET, POST, PATCH, DELETE, OPTIONS');
   next();
-}); */
+});
 
 
 
 app.post("/api/posts", multer({storage: storage}).single("image"), (req, res, next) => { //ADDING A WINE
+
   var picNameEdited = req.body.picName + '-' + currentDate + '.' + currentExt;
+  if (req.body.picName == 'NONE.jpg'){
+    picNameEdited = 'NONE.jpg';
+  }
   console.log('HERE IS THE EDITED PIC NAME: ' + picNameEdited);
   const post = new Wine({
     name: req.body.name,
