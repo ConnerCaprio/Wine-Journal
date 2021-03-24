@@ -1,7 +1,5 @@
-<div *ngIf="addWine" class="row">
-  <div class="col-2">
-  </div>
-  <div class="col-8">
+<div *ngIf="addWine" class="row mx-1">
+  <div class="col-12">
     <br/>
     <mat-card>
     <form [formGroup]="addWineForm" (submit)="onSubmitClicked(addWineForm)">
@@ -32,16 +30,20 @@
         formControlName="notes"
         placeholder="Notes on the wine"></textarea>
         <br/>
-        <div class="bottom-row">
-          <div class="row">
-            <div class="col-2">
+        <div class="bottom-row mx-0">
+          <div class="row mx-0">
+            <div class="col-5 pr-0">
               <div class="img-btn">
                 <button type="button" (click)="filePicker.click()" mat-stroked-button>Pick Image</button>
                 <input type="file" #filePicker class="img-input" (change)="onImagePicked($event)">
               </div>
             </div>
-            <div class="col-4"></div>
-            <div class="col-6">
+            <div class="col-7 pr-0 my-auto">
+              <p class="img-name">{{ selectedPicName }}</p>
+            </div>
+          </div>
+          <div class="row mx-0">
+            <div class="col-12">
               <mat-radio-group aria-label="Select an option" class="radio-group" formControlName="type">
                 <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent" value="Red">Red</mat-radio-button>
                 <mat-radio-button app:useMaterialThemeColors="false" class="mat-radio-button mat-accent radio-btn-margin" value="White" >White</mat-radio-button>

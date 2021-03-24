@@ -4,27 +4,35 @@
       <div class="col-3">
         <img class="wineImage" src="../../assets/images/{{wine.picName}}">
       </div>
-      <div class="col-9 wineAttributesList" >
+      <div class="col-9 pl-4 wineAttributesList" >
         <form>
-          <div class="row">
+          <div class="row mb-1">
             <div class="col-12">
               <p class="wineAttribute wineAttributeTop">Wine Name: <span class="wineAttributeValue">{{wine.name}}</span></p>
             </div>
           </div>
           <div class="row">
-            <div class="col-6">
-              <p class="wineAttribute">Rating: <span class="wineAttributeValue">{{wine.rating}}</span></p>
-              <p class="wineAttribute">Year: <span class="wineAttributeValue">{{wine.year}}</span></p>
-            </div>
-            <div class="col-6">
-              <p class="wineAttribute">Terroir: <span class="wineAttributeValue">{{wine.terroir}}</span></p>
+            <div class="col-12">
               <p class="wineAttribute">Varietal: <span class="wineAttributeValue">{{wine.variety}}</span></p>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p class="wineAttribute">Rating: <span class="wineAttributeValue">{{wine.rating}}</span></p>
+            </div>
+            <div class="col-6">
+              <p class="wineAttribute">Year: <span class="wineAttributeValue">{{wine.year}}</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+            <p class="wineAttribute">Terroir: <span class="wineAttributeValue">{{wine.terroir}}</span></p>
+          </div>
           </div>
         </form>
       </div>
     </div>
-    <div class="row w-100 mb-3">
+    <div class="row w-100 mb-3 ml-3">
       <div class="col-1"></div>
       <div class="col-11 pr-0">
         <div class="row notesBox">

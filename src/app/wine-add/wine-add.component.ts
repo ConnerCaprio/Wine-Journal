@@ -35,6 +35,8 @@ export class WineAddComponent implements OnInit {
     image: new FormControl(null)
   });
 
+  public selectedPicName: string = '';
+
   public varieties: string[] = [];
 
   constructor(public winesService: WinesService) {
@@ -82,9 +84,11 @@ export class WineAddComponent implements OnInit {
     var fileCheck = (event.target as HTMLInputElement).files;
     if (fileCheck === null) {
       alert('image was null');
+      this.selectedPicName = '';
       return;
     }
     const file = fileCheck[0];
+    this.selectedPicName = file.name;
 
     this.addWineForm.patchValue({image: file});
     this.addWineForm.get('image')?.updateValueAndValidity();

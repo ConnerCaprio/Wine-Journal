@@ -72,7 +72,7 @@ export class AppComponent  {
   }
 
   onAddClicked() {
-    this.addWine = true;
+    this.addWine = !this.addWine;
   }
 
   onRedClicked() {

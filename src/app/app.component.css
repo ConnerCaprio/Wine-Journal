@@ -16,20 +16,22 @@
 
 .btn-inactive {
   color: #fff;
-  background-color: #000;
-  border-color: #000;
 }
 
-.nav-btn {
+.btn-inactive:focus {
+  box-shadow: none !important;
+}
+
+/* .nav-btn {
   margin-right: 15px;
 }
 
 .nav-link {
   margin-left: 2px;
-}
+} */
 
 .nav-img {
-  width: 50px;
+  width: 2rem;
   height: auto;
   border-radius: 1.5rem;
 }
@@ -49,5 +51,5 @@
 }
 
 .footer-center {
-  margin-left: 40%;
+  margin: auto;
 }

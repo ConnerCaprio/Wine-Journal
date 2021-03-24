@@ -17,60 +17,66 @@
 
 
 <!-- Toolbar -->
-<div class="row my-navbar">
-  <nav class="navbar navbar-light row mx-0">
-    <a class="navbar-brand nav-link" href="#"><img src="./../assets/images/navbarLogo.jpg" class="nav-img"></a>
-      <button class="btn nav-btn" [ngClass]="selected === 'all' ? 'btn-active' : 'btn-inactive'" (click)="onAllClicked()">All</button>
-      <button class="btn nav-btn" [ngClass]="selected === 'red' ? 'btn-active' : 'btn-inactive'" (click)="onRedClicked()">Red </button>
-      <button class="btn nav-btn" [ngClass]="selected === 'white' ? 'btn-active' : 'btn-inactive'" (click)="onWhiteClicked()">White</button>
-      <button class="btn nav-btn" [ngClass]="selected === 'sparkling' ? 'btn-active' : 'btn-inactive'" (click)="onSparklingClicked()">Sparkling</button>
+<div class="row my-navbar mb-3">
+  <nav class="navbar navbar-light row mx-0 px-2">
+    <a class="navbar-brand mr-2" href="#"><img src="./../assets/images/navbarLogo.jpg" class="nav-img"></a>
+      <button class="btn nav-btn py-1 px-2 mr-2" [ngClass]="selected === 'all' ? 'btn-active' : 'btn-inactive'" (click)="onAllClicked()">All</button>
+      <button class="btn nav-btn py-1 px-2 mr-2" [ngClass]="selected === 'red' ? 'btn-active' : 'btn-inactive'" (click)="onRedClicked()">Red </button>
+      <button class="btn nav-btn py-1 px-2 mr-2" [ngClass]="selected === 'white' ? 'btn-active' : 'btn-inactive'" (click)="onWhiteClicked()">White</button>
+      <button class="btn nav-btn py-1 px-2 mr-2" [ngClass]="selected === 'sparkling' ? 'btn-active' : 'btn-inactive'" (click)="onSparklingClicked()">Sparkling</button>
+      <button (click)="onAddClicked()" class="btn nav-btn py-1 px-2" [ngClass]="addWine ? 'btn-active' : 'btn-inactive'">Add</button>
   </nav>
 </div>
 
 <div class="page-header">
   <div class="row header-row">
-    <div class="col-10 sort-container">
+    <div class="col-12 sort-container">
       <div class="row mx-0">
-        <div class="col-2">
+        <div class="col-4">
           <div class="row">
             <p class="mb-2">Sort Varietals By: </p>
           </div>
-          <div class="row">
-            <p class="mb-0">Sort Wines By: </p>
-          </div>
         </div>
-        <div class="col-6">
+        <div class="col-8">
           <mat-radio-group aria-label="Select an option" (change)="varietalSortChange($event)">
           <div class="row">
-            <div class="col-2">
+            <div class="col-6">
               <mat-radio-button value="A-Z">A-Z</mat-radio-button>
             </div>
-            <div class="col-2">
+            <div class="col-6">
               <mat-radio-button value="Z-A">Z-A</mat-radio-button>
             </div>
           </div>
           </mat-radio-group>
+        </div>
+      </div>
+        <div class="row mx-0">
+          <div class="col-4">
+          <div class="row">
+            <p class="mb-0">Sort Wines By: </p>
+          </div>
+        </div>
+        <div class="col-8">
           <mat-radio-group aria-label="Select an option" (change)="sortChange($event)" >
             <div class="row">
-              <div class="col-2">
+              <div class="col-6">
                 <mat-radio-button value="A-Z">A-Z</mat-radio-button>
               </div>
-              <div class="col-2">
+              <div class="col-6">
                 <mat-radio-button value="Z-A">Z-A</mat-radio-button>
               </div>
-              <div class="col-2">
+            </div>
+            <div class="row">
+              <div class="col-6">
                 <mat-radio-button value="Rating Up">Rating <fa-icon class="icon" [icon]="upIcon"></fa-icon></mat-radio-button>
               </div>
-              <div class="col-2">
+              <div class="col-6">
                 <mat-radio-button value="Rating Down">Rating <fa-icon class="icon" [icon]="downIcon"></fa-icon></mat-radio-button>
               </div>
             </div>
           </mat-radio-group>
         </div>
       </div>
-    </div>
-    <div class="col-2">
-      <button (click)="onAddClicked()" class="btn btn-inactive float-right">Add</button>
     </div>
   </div>
 </div>
@@ -102,7 +108,7 @@ image modal after clicking image?
 
 <router-outlet></router-outlet>
 <footer class="footer">
-  <div class="container footer-center">
+  <div class="container footer-center text-center">
     <span class="text-muted">Powered by: Angular, Node, Express, & MongoDB </span><br/>
     <span class="text-muted">Created by: Conner Caprio and Corrine Smith </span>
   </div>
