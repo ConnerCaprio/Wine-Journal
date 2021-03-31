@@ -26,7 +26,8 @@
           </div>
           <div class="row">
             <div class="col-12">
-            <p class="wineAttribute">Terroir: <span class="wineAttributeValue">{{wine.terroir}}</span></p>
+            <p *ngIf="wine.terroir" class="wineAttribute">Terroir: <span class="wineAttributeValue">{{wine.terroir}}</span></p>
+            <p *ngIf="!wine.terroir" class="wineAttribute">Terroir: NA</p>
           </div>
           </div>
         </form>
